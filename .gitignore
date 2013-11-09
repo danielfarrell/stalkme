@@ -1,0 +1,4 @@
+.env
+deps/**/*
+priv/static/components/**/*
+tmp/**/*

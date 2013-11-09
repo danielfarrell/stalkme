@@ -1,0 +1,10 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title><%= @title %></title>
+  <link rel="shortcut icon" href="/static/favicon.ico" />
+</head>
+<body>
+	<%= content_for(:template) %>
+</body>
+</html>

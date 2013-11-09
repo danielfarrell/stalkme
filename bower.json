@@ -1,0 +1,21 @@
+{
+  "name": "stalkme",
+  "version": "0.0.0",
+  "main": "priv/static/",
+  "authors": [
+    "Daniel Farrell <danielfarrell76@gmail.com>"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+    "backbone": "latest",
+    "underscore": "latest"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
