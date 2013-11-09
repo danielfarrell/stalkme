@@ -8,7 +8,8 @@
   "dependencies": {
     "jquery": "latest",
     "backbone": "latest",
-    "underscore": "latest"
+    "underscore": "latest",
+    "bootstrap": "2.3.x"
   },
   "license": "MIT",
   "ignore": [
