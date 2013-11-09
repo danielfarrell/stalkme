@@ -1,0 +1,7 @@
+<form action="/statuses" method="POST">
+	<label>
+		Status:
+		<textarea name="text"></textarea>
+	</label>
+	<input type="submit" value="Create!"/>
+</form>

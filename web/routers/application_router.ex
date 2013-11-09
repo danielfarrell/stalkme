@@ -2,19 +2,18 @@ defmodule ApplicationRouter do
   use Dynamo.Router
 
   prepare do
-    # Pick which parts of the request you want to fetch
-    # You can comment the line below if you don't need
-    # any of them or move them to a forwarded router
-    conn.fetch([:cookies, :params])
-    conn.assign :layout, "main"
+    conn = conn.fetch([:cookies, :params, :session])
+    conn = conn.assign :layout, "main"
+    conn = conn.assign :title, "Stalk Me!"
+    conn = configure_session(conn, :path, "/")
+    conn
   end
-
-  # It is common to break your Dynamo into many
-  # routers, forwarding the requests between them:
-  # forward "/posts", to: PostsRouter
 
   get "/" do
-    conn = conn.assign(:title, "Stalk Me!")
     render conn, "index.html"
   end
+
+  forward "/statuses", to: StatusesRouter
+  forward "/users", to: UsersRouter
+  forward "/sessions", to: SessionsRouter
 end

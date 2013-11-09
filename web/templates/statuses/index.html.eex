@@ -1,0 +1,5 @@
+<ul>
+<%= lc status inlist @statuses do %>
+  <li><%= status.user.get.name %> said: <%= status.text %></li>
+<% end %>
+</ul>
