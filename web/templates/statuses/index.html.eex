@@ -1,5 +1,5 @@
 <ul>
 <%= lc status inlist @statuses do %>
-  <li><%= status.user.get.name %> said: <%= status.text %></li>
+  <li><%= status.user.get.name %> said: <%= status.text %> at <%= status.created_at %></li>
 <% end %>
 </ul>

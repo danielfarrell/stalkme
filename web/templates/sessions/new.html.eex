@@ -1,22 +1,15 @@
-<form class="form-horizontal" action="/sessions" method="POST">
-  <div class="control-group">
-    <label class="control-label" for="email">Email</label>
-    <div class="controls">
-      <input type="text" id="email" name="email" placeholder="Email" />
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="password">Password</label>
-    <div class="controls">
-      <input type="password" id="password" name="password" placeholder="Password" />
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-        <input type="checkbox" name="remember" /> Remember me
-      </label>
-      <button type="submit" class="btn">Sign in</button>
+<form action="/sessions" method="POST">
+  <fieldset>
+    <legend>Login</legend>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Email" />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" />
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Login</button>
     </div>
   </div>
 </form>
