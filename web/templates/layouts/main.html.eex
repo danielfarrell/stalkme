@@ -45,5 +45,11 @@
     <%= content_for(:template) %>
   </div>
   <script src="/static/assets/base.js" ></script>
+  <script src="/static/jquery.timeago.js" ></script>
+  <script>
+  jQuery(document).ready(function() {
+    jQuery("abbr.timeago").timeago();
+  });
+  </script>
 </body>
 </html>
