@@ -8,9 +8,14 @@ defmodule SessionsRouter do
   post "/" do
     user = UserLogin.login(conn.params[:email], conn.params[:password])
     conn = put_session(conn, :user_id, user.id)
-    conn.resp 200, "Logged in as: #{user.id}"
+    redirect conn, to: "/"
   end
 
   delete "/:id" do
+  end
+
+  get "/destroy" do
+    conn = put_session(conn, :user_id, nil)
+    redirect conn, to: "/"
   end
 end

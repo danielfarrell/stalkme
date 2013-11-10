@@ -15,8 +15,28 @@
   <div class="navbar">
     <div class="navbar-inner">
       <a class="brand" href="/"><%= @title %></a>
-      <ul class="nav">
-        <li><a href="/sessions/new">Login</a></li>
+        <%= if @current_user do %>
+        <ul class="nav pull-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= @current_user.name %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/users/<%= @current_user.id %>">My Statuses</a></li>
+              <li><a href="/sessions/destroy">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav">
+          <li><a href="/statuses/new">New Status</a></li>
+        </ul>
+        <%= else %>
+        <ul class="nav">
+          <li><a href="/sessions/new">Login</a></li>
+          <li><a href="/users/new">Register</a></li>
+        </ul>
+        <%= end %>
       </ul>
     </div>
   </div>

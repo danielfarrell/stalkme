@@ -9,9 +9,17 @@ defmodule UsersRouter do
     render conn, "users/new.html"
   end
 
+  get "/:id" do
+    {id, _} = Integer.parse(id)
+    conn = conn.assign :statuses, Statuses.for_user(id)
+    render conn, "statuses/index.html"
+  end
+
   post "/" do
-    user = User.new(name: conn.params[:name], email: conn.params[:email], password: conn.params[:password])
+    password = conn.params[:password] |> Authme.hash
+    user = User.new(name: conn.params[:name], email: conn.params[:email], password: password)
     user = Stalkme.Repo.create(user)
-    conn.resp 200, "Created user: #{user.id}"
+    conn = put_session(conn, :user_id, user.id)
+    redirect conn, to: "/"
   end
 end

@@ -12,4 +12,19 @@ defmodule Authme do
     end
   end
 
+  defmacro current_user(conn) do
+    quote do
+      session = get_session(unquote(conn))
+      if session[:user_id] do
+        Stalkme.Repo.get User, session[:user_id]
+      else
+        nil
+      end
+    end
+  end
+
+  def hash(string) do
+    :crypto.hash(:md5, string) |> :base64.encode
+  end
+
 end
