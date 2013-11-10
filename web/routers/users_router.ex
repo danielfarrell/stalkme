@@ -18,7 +18,7 @@ defmodule UsersRouter do
   post "/" do
     password = conn.params[:password] |> Authme.hash
     user = User.new(name: conn.params[:name], email: conn.params[:email], password: password)
-    user = Stalkme.Repo.create(user)
+    user = Repo.create(user)
     conn = put_session(conn, :user_id, user.id)
     redirect conn, to: "/"
   end

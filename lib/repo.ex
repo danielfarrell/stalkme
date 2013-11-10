@@ -1,4 +1,4 @@
-defmodule Stalkme.Repo do
+defmodule Repo do
   use Ecto.Repo, adapter: Ecto.Adapters.Postgres
 
   def url do

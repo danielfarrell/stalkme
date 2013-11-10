@@ -9,7 +9,7 @@ defmodule Stalkme.Supervisor do
   # The callback invoked when the supervisor starts
   def init(stack) do
     children = [ 
-      worker(Stalkme.Repo, []),
+      worker(Repo, []),
       supervisor(Stalkme.Dynamo, [stack])
     ]
     supervise children, strategy: :one_for_one

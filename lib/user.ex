@@ -15,6 +15,6 @@ defmodule UserLogin do
   def login(email, password) do
     password = Authme.hash(password)
     query = from u in User, where: u.email == ^email and u.password == ^password, limit: 1
-    Stalkme.Repo.all(query) |> Enum.first
+    Repo.all(query) |> Enum.first
   end
 end

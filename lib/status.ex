@@ -18,7 +18,7 @@ defmodule Statuses do
       limit: @per_page,
       offset: skip(page),
       preload: [:user]
-    Stalkme.Repo.all(query)
+    Repo.all(query)
   end
 
   def for_user(user_id, page // 1) do
@@ -28,7 +28,7 @@ defmodule Statuses do
       limit: @per_page,
       offset: skip(page),
       preload: [:user]
-    Stalkme.Repo.all(query)
+    Repo.all(query)
   end
 
   defp skip(1), do: 0

@@ -15,7 +15,7 @@ defmodule StatusesRouter do
   post "/" do
     session = get_session(conn)
     status = Status.new(text: conn.params[:text], user_id: session[:user_id], created_at: Now.datetime, updated_at: Now.datetime)
-    status = Stalkme.Repo.create(status)
+    status = Repo.create(status)
     redirect conn, to: "/statuses"
   end
 end
