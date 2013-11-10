@@ -1,4 +1,5 @@
 .env
 deps/**/*
-priv/static/components/**/*
+bower_components/**/*
+priv/static/**/*
 tmp/**/*

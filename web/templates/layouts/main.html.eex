@@ -9,7 +9,7 @@
 
   <title><%= @title %></title>
   <link rel="shortcut icon" href="/static/favicon.ico" />
-  <link rel="stylesheet" href="/static/components/bootstrap/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/assets/bootstrap.css">
 </head>
 <body>
   <div class="navbar">
@@ -24,5 +24,6 @@
   <div class="container">
     <%= content_for(:template) %>
   </div>
+  <script src="/static/assets/base.js" ></script>
 </body>
 </html>
