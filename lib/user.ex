@@ -1,5 +1,6 @@
 defmodule User do
   use Ecto.Model
+  import Ecto.Query
 
   queryable "users" do
     field :name,     :string
@@ -7,10 +8,6 @@ defmodule User do
     field :password, :string
     has_many :statuses, Status
   end
-end
-
-defmodule UserLogin do
-  import Ecto.Query
 
   def login(email, password) do
     password = Authme.hash(password)
