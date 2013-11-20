@@ -17,7 +17,7 @@ defmodule StatusesRouter do
     session = get_session(conn)
     status = Status.new(text: conn.params[:text], user_id: session[:user_id], created_at: Now.datetime, updated_at: Now.datetime)
     status = Repo.create(status)
-    Notifyme.notify({:status, status.id})
+    Announcer.announce({:status, status.id})
     redirect conn, to: "/statuses"
   end
 end
