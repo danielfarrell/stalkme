@@ -44,12 +44,25 @@
   <div class="container">
     <%= content_for(:template) %>
   </div>
+  <div id="messages"></div>
   <script src="/static/assets/base.js" ></script>
   <script src="/static/jquery.timeago.js" ></script>
   <script>
   jQuery(document).ready(function() {
     jQuery("abbr.timeago").timeago();
   });
+  </script>
+  <script>
+    (function () {
+      var statuses = jQuery('#statuses');
+      if (statuses) {
+        var ws = new WebSocket("ws://localhost:3030/websocket");
+
+        ws.onmessage = function (event) {
+          statuses.prepend(event.data);
+        };
+      }
+    })();
   </script>
 </body>
 </html>

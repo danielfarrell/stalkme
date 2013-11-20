@@ -4,7 +4,7 @@ defmodule Stalkme.Mixfile do
   def project do
     [ app: :stalkme,
       version: "0.0.1",
-      dynamos: [Stalkme.Dynamo],
+      dynamos: [Stalkme.Dynamo, Websocket.Router],
       compilers: [:elixir, :dynamo, :app],
       env: [prod: [compile_path: "ebin"]],
       compile_path: "tmp/#{Mix.env}/stalkme/ebin",

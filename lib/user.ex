@@ -1,6 +1,5 @@
 defmodule User do
   use Ecto.Model
-  import Ecto.Query
 
   queryable "users" do
     field :name,     :string

@@ -3,3 +3,4 @@ deps/**/*
 bower_components/**/*
 priv/static/**/*
 tmp/**/*
+_build/**/*

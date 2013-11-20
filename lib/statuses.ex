@@ -21,6 +21,14 @@ defmodule Statuses do
     Repo.all(query)
   end
 
+  def find(status_id) do
+    query = from s in Status,
+      where: s.id == ^status_id,
+      limit: 1,
+      preload: [:user]
+    Repo.all(query) |> Enum.first
+  end
+
   defp skip(1), do: 0
   defp skip(page) when page < 1, do: 0
   defp skip(page), do: (page - 1) * @per_page

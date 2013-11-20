@@ -9,6 +9,8 @@ defmodule Stalkme.Supervisor do
   # The callback invoked when the supervisor starts
   def init(stack) do
     children = [ 
+      worker(ConnectionKeeper, []),
+      worker(Notifyme, []),
       worker(Repo, []),
       supervisor(Stalkme.Dynamo, [stack])
     ]

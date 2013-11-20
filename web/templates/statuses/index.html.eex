@@ -1,4 +1,4 @@
-<ul class="unstyled">
+<ul class="unstyled" id="statuses">
 <%= lc status inlist @statuses do %>
   <%= render "statuses/_status.html", status: status %>
 <% end %>

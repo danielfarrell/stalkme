@@ -26,4 +26,5 @@ defmodule Stalkme.Dynamo do
   templates do
     use Dynamo.Helpers
   end
+
 end
