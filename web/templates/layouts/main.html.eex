@@ -59,7 +59,9 @@
         var ws = new WebSocket("ws://localhost:3030/websocket");
 
         ws.onmessage = function (event) {
-          statuses.prepend(event.data);
+          s = jQuery(event.data)
+          s.find("abbr.timeago").timeago();
+          statuses.prepend(s);
         };
       }
     })();
