@@ -8,5 +8,5 @@
     <div class="form-actions">
       <button type="submit" class="btn">Create!</button>
     </div>
-  </div>
+  </fieldset>
 </form>
