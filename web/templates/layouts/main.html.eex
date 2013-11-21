@@ -7,14 +7,15 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><%= @title %></title>
+  <title>Stalk Me! — <%= content_for(:title) || 'Home' %></title>
   <link rel="shortcut icon" href="/static/favicon.ico" />
   <link rel="stylesheet" href="/static/assets/bootstrap.css">
+  <link rel="stylesheet" href="/static/stylesheets/app.css">
 </head>
 <body>
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="/"><%= @title %></a>
+      <a class="brand" href="/">Stalk Me!</a>
         <%= if @current_user do %>
         <ul class="nav pull-right">
           <li class="dropdown">
@@ -28,15 +29,12 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav">
-          <li><a href="/statuses/new">New Status</a></li>
-        </ul>
-        <%= else %>
+        <% else %>
         <ul class="nav">
           <li><a href="/sessions/new">Login</a></li>
           <li><a href="/users/new">Register</a></li>
         </ul>
-        <%= end %>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -44,27 +42,8 @@
   <div class="container">
     <%= content_for(:template) %>
   </div>
-  <div id="messages"></div>
   <script src="/static/assets/base.js" ></script>
-  <script src="/static/jquery.timeago.js" ></script>
-  <script>
-  jQuery(document).ready(function() {
-    jQuery("abbr.timeago").timeago();
-  });
-  </script>
-  <script>
-    (function () {
-      var statuses = jQuery('#statuses');
-      if (statuses) {
-        var ws = new WebSocket("ws://localhost:3030/websocket");
-
-        ws.onmessage = function (event) {
-          s = jQuery(event.data)
-          s.find("abbr.timeago").timeago();
-          statuses.prepend(s);
-        };
-      }
-    })();
-  </script>
+  <script src="/static/javascripts/jquery.timeago.js" ></script>
+  <%= content_for(:footer) %>
 </body>
 </html>

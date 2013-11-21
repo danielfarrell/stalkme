@@ -6,7 +6,6 @@ defmodule ApplicationRouter do
     conn = conn.fetch([:cookies, :params, :session])
     conn = configure_session(conn, :path, "/")
     conn = conn.assign :layout, "main"
-    conn = conn.assign :title, "Stalk Me!"
     conn = conn.assign :current_user, current_user(conn)
     conn
   end
