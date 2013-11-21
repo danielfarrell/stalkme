@@ -9,6 +9,8 @@
     "jquery": "latest",
     "backbone": "latest",
     "underscore": "latest",
+    "jquery-form": "latest",
+    "jquery-timeago": "latest",
     "bootstrap": "2.3.x"
   },
   "license": "MIT",

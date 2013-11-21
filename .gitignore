@@ -1,6 +1,6 @@
 .env
 deps/**/*
 bower_components/**/*
-priv/static/**/*
+priv/static/assets/**/*
 tmp/**/*
 _build/**/*

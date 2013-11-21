@@ -1,5 +1,46 @@
-<ul class="unstyled" id="statuses">
-<%= lc status inlist @statuses do %>
-  <%= render "statuses/_status.html", status: status %>
+<div class="row">
+
+  <div class="span6">
+    <%= if @current_user do %>
+    <form action="/statuses" method="POST">
+      <fieldset>
+        <label for="text">What are you doing?</label>
+        <textarea id="text" name="text" rows="4"></textarea>
+      </fieldset>
+      <button type="submit" class="btn">Add</button>
+    </form>
+    <% end %>
+
+    <ul class="unstyled" id="statuses">
+    <%= lc status inlist @statuses do %>
+      <%= render "statuses/_status.html", status: status %>
+    <% end %>
+    </ul>
+  </div>
+
+</div>
+
+<% content_for :footer do %>
+<script>
+jQuery(document).ready(function() {
+  jQuery("abbr.timeago").timeago();
+});
+</script>
+<script>
+  (function () {
+    var addStatus = function (event) {
+      var statuses = jQuery('#statuses');
+      var s = jQuery(event.data);
+      s.find("abbr.timeago").timeago();
+      statuses.prepend(s);
+    };
+    $(document).ready(function() { 
+      $('form').ajaxForm(function(r, status, xhr, form){
+        form[0].reset();
+      });
+    }); 
+    var ws = new WebSocket("ws://localhost:3030/websocket");
+    ws.onmessage = addStatus;
+  })();
+</script>
 <% end %>
-</ul>
