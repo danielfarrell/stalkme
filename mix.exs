@@ -18,9 +18,9 @@ defmodule Stalkme.Mixfile do
   end
 
   defp deps do
-    [ { :cowboy, github: "extend/cowboy" },
+    [ { :cowboy, "~> 0.9.0", github: "extend/cowboy" },
       { :dynamo, "0.1.0-dev", github: "elixir-lang/dynamo" },
-      { :postgrex, github: "ericmj/postgrex" },
+      { :postgrex, "~> 0.2.0", github: "ericmj/postgrex" },
       { :ecto, github: "elixir-lang/ecto" } ]
   end
 end
