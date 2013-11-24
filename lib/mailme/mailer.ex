@@ -6,18 +6,26 @@ defmodule Mailme.Mailer do
     smtp_info = System.get_env("SMTP_URL") |> URI.parse
 
     quote do
+
+      def send(conn, opts) do
+        Dict.put(opts, :body, Mailme.Renderer.Dynamo.render(conn, opts))
+          |> build_email
+          |> deliver
+      end
+
       def send(opts) do
-        opts = Keyword.merge(unquote(mailer_opts), opts)
-        email = {opts[:from], [opts[:to]], headers(opts) <> opts[:body]}
+        Dict.put(opts, :body, Mailme.Renderer.Simple.render(opts))
+          |> build_email
+          |> deliver
+      end
+
+      defp build_email(opts) do
+        Keyword.merge(unquote(mailer_opts), opts)
+          |> Mailme.Builder.build
+      end
+
+      defp deliver(email) do
         :gen_smtp_client.send(email, send_info)
-      end
-
-      def render(template, opts) do
-        EEx.eval_file "web/templates/" <> template <> ".text.eex", opts
-      end
-
-      defp headers(opts) do
-        "Subject: #{opts[:subject]}\r\nFrom: #{opts[:from]} \r\nTo: #{opts[:to]} \r\n\r\n"
       end
 
       defp send_info do
@@ -25,7 +33,10 @@ defmodule Mailme.Mailer do
       end
 
       defp user_info do
-        unquote(smtp_info.userinfo) |> String.Chars.to_string |> String.split(":") |> user_info
+        unquote(smtp_info.userinfo)
+          |> String.Chars.to_string
+          |> String.split(":")
+          |> user_info
       end
       defp user_info([""]) do
         []
