@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Download javascript from bower
+bower install
+
+# Compile bootstrap
+cd bower_components/bootstrap
+make
+cd ../../
+
+# Compile js/css
+jammit -c priv/assets.yml -P priv/static
