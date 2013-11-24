@@ -1,0 +1,3 @@
+Welcome to Stalkme!
+
+Thank you for joining up <%= @user.name %>, we are happy you are in our community.

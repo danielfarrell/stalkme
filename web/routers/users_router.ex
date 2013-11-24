@@ -19,6 +19,7 @@ defmodule UsersRouter do
     password = conn.params[:password] |> Authme.hash
     user = User.new(name: conn.params[:name], email: conn.params[:email], password: password)
     user = Repo.create(user)
+    Mailer.signup(user)
     conn = put_session(conn, :user_id, user.id)
     redirect conn, to: "/"
   end
