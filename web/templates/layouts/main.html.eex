@@ -9,8 +9,7 @@
 
   <title>Stalk Me! — <%= content_for(:title) || 'Home' %></title>
   <link rel="shortcut icon" href="/static/favicon.ico" />
-  <link rel="stylesheet" href="/static/assets/bootstrap.css">
-  <link rel="stylesheet" href="/static/stylesheets/app.css">
+  <link rel="stylesheet" href="/static/assets/application.css">
 </head>
 <body>
   <div class="navbar">
@@ -42,7 +41,7 @@
   <div class="container">
     <%= content_for(:template) %>
   </div>
-  <script src="/static/assets/base.js" ></script>
+  <script src="/static/assets/application.js" ></script>
   <%= content_for(:footer) %>
 </body>
 </html>

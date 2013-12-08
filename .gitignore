@@ -1,6 +1,8 @@
 .env
 deps/**/*
-bower_components/**/*
-priv/static/assets/**/*
 tmp/**/*
 _build/**/*
+web/assets/components/**/*
+priv/static/assets/**/*
+.sass-cache
+.bundle
