@@ -1,8 +1,24 @@
 defmodule Announcer do
   use GenServer.Behaviour
 
+  # Public API
+  def add(pid) do
+    cast({:add, pid})
+  end
+
+  def remove(pid) do
+    cast({:remove, pid})
+  end
+
+  def announce(message) do
+    cast({:announce, message})
+  end
+
+  # OTP API
+  @server_name :announcer
+
   def start_link do
-    :gen_server.start_link({:global, __MODULE__}, __MODULE__, [], [])
+    :gen_server.start_link({:local, @server_name}, __MODULE__, [], [])
   end
 
   def handle_cast({:add, pid}, connections) do
@@ -22,28 +38,16 @@ defmodule Announcer do
     { :noreply, connections }
   end
 
-  def add(pid) do
-    cast({:add, pid})
+  defp cast(message) do
+    :gen_server.cast(@server_name, message)
   end
 
-  def remove(pid) do
-    cast({:remove, pid})
+  defp call(message) do
+    :gen_server.call(@server_name, message)
   end
 
-  def announce(message) do
-    cast({:announce, message})
-  end
-
-  def cast(message) do
-    :gen_server.cast({:global, __MODULE__}, message)
-  end
-
-  def call(message) do
-    :gen_server.call({:global, __MODULE__}, message)
-  end
-
-  def send_all([], _message), do: []
-  def send_all([pid|connections], message) do
+  defp send_all([], _message), do: []
+  defp send_all([pid|connections], message) do
     pid <- { :message, message }
     send_all(connections, message)
   end
