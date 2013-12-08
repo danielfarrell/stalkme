@@ -13,3 +13,9 @@ group :assets do
   gem 'uglifier'
   gem 'bootstrap-sass', '~> 2.3.2'
 end
+
+group :guard do
+  gem 'guard'
+  gem 'guard-sprockets'
+  gem 'guard-elixir'
+end
