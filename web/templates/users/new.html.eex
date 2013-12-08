@@ -3,13 +3,16 @@
     <legend>Register</legend>
 
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Name" />
+    <input type="text" id="name" name="name" placeholder="Your Full Name" />
 
     <label for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="Email" />
+    <input type="text" id="email" name="email" placeholder="Your Email" />
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Choose a Username" />
 
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="Password" />
+    <input type="password" id="password" name="password" placeholder="Choose a Password" />
 
     <div class="form-actions">
       <button type="submit" class="btn">Register</button>

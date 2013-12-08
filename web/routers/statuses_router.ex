@@ -18,6 +18,7 @@ defmodule StatusesRouter do
     status = Status.new(text: conn.params[:text], user_id: session[:user_id], created_at: Now.datetime, updated_at: Now.datetime)
     status = Repo.create(status)
     Announcer.announce({:status, status.id})
-    redirect conn, to: "/statuses"
+    conn = conn.assign :layout, false
+    render conn, "statuses/show.html"
   end
 end

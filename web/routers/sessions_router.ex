@@ -6,7 +6,7 @@ defmodule SessionsRouter do
   end
 
   post "/" do
-    user = User.login(conn.params[:email], conn.params[:password])
+    user = User.login(conn.params[:username], conn.params[:password])
     conn = put_session(conn, :user_id, user.id)
     redirect conn, to: "/"
   end
