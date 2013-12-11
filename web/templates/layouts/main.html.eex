@@ -10,6 +10,9 @@
   <title>Stalk Me! — <%= content_for(:title) || 'Home' %></title>
   <link rel="shortcut icon" href="/static/favicon.ico" />
   <link rel="stylesheet" href="/static/assets/application.css">
+  <script type="text/javascript">
+    var hostname="<%= conn.host %>";
+  </script>
 </head>
 <body>
   <div class="navbar">

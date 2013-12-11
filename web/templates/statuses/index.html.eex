@@ -21,12 +21,7 @@
 </div>
 
 <% content_for :footer do %>
-<script>
-jQuery(document).ready(function() {
-  jQuery("abbr.timeago").timeago();
-});
-</script>
-<script>
+<script type="text/javascript">
   (function () {
     var addStatus = function (event) {
       var statuses = jQuery('#statuses');
@@ -34,12 +29,13 @@ jQuery(document).ready(function() {
       s.find("abbr.timeago").timeago();
       statuses.prepend(s);
     };
-    $(document).ready(function() { 
+    $(document).ready(function() {
+      $("abbr.timeago").timeago();
       $('form').ajaxForm(function(r, status, xhr, form){
         form[0].reset();
       });
     }); 
-    var ws = new WebSocket("ws://localhost:3030/websocket");
+    var ws = new WebSocket("ws://" + hostname + ":3030/websocket");
     ws.onmessage = addStatus;
   })();
 </script>
