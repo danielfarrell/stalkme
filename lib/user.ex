@@ -14,6 +14,6 @@ defmodule User do
   def login(username, password) do
     password = Authme.hash(password)
     query = from u in User, where: u.username == ^username and u.password == ^password, limit: 1
-    query |> Repo.all |> Enum.first
+    query |> Repo.all |> List.first
   end
 end

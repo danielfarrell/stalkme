@@ -8,7 +8,7 @@ defmodule Statuses do
       limit: @per_page,
       offset: skip(page),
       preload: [:user]
-    Repo.all(query)
+    query |> Repo.all
   end
 
   def for_user(user_id, page \\ 1) do
@@ -18,7 +18,7 @@ defmodule Statuses do
       limit: @per_page,
       offset: skip(page),
       preload: [:user]
-    Repo.all(query)
+    query |> Repo.all
   end
 
   def find(status_id) do
@@ -26,7 +26,7 @@ defmodule Statuses do
       where: s.id == ^status_id,
       limit: 1,
       preload: [:user]
-    Repo.all(query) |> Enum.first
+    query |> Repo.all(query) |> List.first
   end
 
   defp skip(1), do: 0
