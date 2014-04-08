@@ -6,7 +6,6 @@ defmodule User do
     field :username,   :string
     field :email,      :string
     field :password,   :string
-    field :token,      :string
     field :created_at, :datetime
     field :updated_at, :datetime
     has_many :statuses, Status
