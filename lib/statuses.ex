@@ -22,11 +22,8 @@ defmodule Statuses do
   end
 
   def find(status_id) do
-    query = from s in Status,
-      where: s.id == ^status_id,
-      limit: 1,
-      preload: [:user]
-    query |> Repo.all(query) |> List.first
+    query = from(s in Status, where: s.id == ^status_id, limit: 1, preload: :user)
+    query |> Repo.all |> List.first
   end
 
   defp skip(1), do: 0
