@@ -48,7 +48,7 @@ defmodule Announcer do
 
   defp send_all([], _message), do: []
   defp send_all([pid|connections], message) do
-    pid <- { :message, message }
+    send pid, { :message, message }
     send_all(connections, message)
   end
 

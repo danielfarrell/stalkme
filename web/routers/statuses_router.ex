@@ -16,7 +16,7 @@ defmodule StatusesRouter do
   post "/" do
     session = get_session(conn)
     status = Status.new(text: conn.params[:text], user_id: session[:user_id], created_at: Now.datetime, updated_at: Now.datetime)
-    status = Repo.create(status)
+    status = Repo.insert(status)
     Announcer.announce({:status, status.id})
     conn = conn.assign :layout, false
     render conn, "statuses/show.html"

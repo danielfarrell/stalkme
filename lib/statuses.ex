@@ -2,7 +2,7 @@ defmodule Statuses do
   import Ecto.Query
 
   @per_page 30
-  def recent(page // 1) do
+  def recent(page \\ 1) do
     query = from s in Status,
       order_by: [desc: s.created_at],
       limit: @per_page,
@@ -11,7 +11,7 @@ defmodule Statuses do
     Repo.all(query)
   end
 
-  def for_user(user_id, page // 1) do
+  def for_user(user_id, page \\ 1) do
     query = from s in Status,
       where: s.user_id == ^user_id,
       order_by: [desc: s.created_at],

@@ -7,13 +7,13 @@ defmodule Mailme.Mailer do
 
     quote do
 
-      def send(conn, opts) do
+      def send_mail(conn, opts) do
         Dict.put(opts, :body, Mailme.Renderer.Dynamo.render(conn, opts))
           |> build_email
           |> deliver
       end
 
-      def send(opts) do
+      def send_mail(opts) do
         Dict.put(opts, :body, Mailme.Renderer.Simple.render(opts))
           |> build_email
           |> deliver

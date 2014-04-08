@@ -2,7 +2,7 @@ defmodule Websocket.Router do
   use Dynamo
   use Dynamo.Router
 
-  config :dynamo, templates_paths: [ Path.expand("../websocket", __FILE__) ]
+  config :dynamo, templates_paths: [ Path.expand("./websocket", __DIR__) ]
   config :server,
     port: 3030,
     dispatch: [{ :_, [

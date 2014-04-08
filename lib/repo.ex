@@ -1,8 +1,8 @@
 defmodule Repo do
   use Ecto.Repo, adapter: Ecto.Adapters.Postgres
 
-  def url do
-    System.get_env("DATABASE_URL")
+  def conf do
+    parse_url System.get_env("DATABASE_URL")
   end
 
   def priv do
