@@ -19,7 +19,6 @@ defmodule Stalkme.Controllers.Users do
     password = password |> Authme.hash
     user = %User{name: name, username: username, email: email, password: password, created_at: Now.datetime, updated_at: Now.datetime}
     user = Repo.insert(user)
-    #UsersMailer.signup(conn, user)
     conn = fetch_session(conn) |> put_session(:user_id, user.id)
     redirect conn, "/"
   end
