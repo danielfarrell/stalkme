@@ -13,7 +13,7 @@ defmodule Stalkme.Channels.Live do
 
   def announce(status_id) do
     s = Status.find(status_id)
-    msg = EEx.eval_file "lib/stalkme/templates/statuses/_status.html.eex", assigns: [status: s]
+    msg = Stalkme.Views.Statuses.render("_status.html", status: s) |> Phoenix.Html.Safe.to_string
     broadcast "live", "updates", "update", msg
   end
 
