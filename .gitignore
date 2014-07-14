@@ -1,8 +1,6 @@
-.env
-deps/**/*
-tmp/**/*
-_build/**/*
-web/assets/components/**/*
-priv/static/assets/**/*
-.sass-cache
-.bundle
+/_build
+/deps
+/node_modules
+erl_crash.dump
+*.ez
+priv/static/components/**/*

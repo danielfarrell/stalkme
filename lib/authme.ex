@@ -2,18 +2,18 @@ defmodule Authme do
 
   defmacro authenticate_user(conn) do
     quote do
-      session = get_session(unquote(conn))
-      unless session[:user_id] do
-        halt! unquote(conn).status(401)
+      user_id = fetch_session(unquote(conn)) |> get_session(:user_id)
+      unless user_id do
+        error(unquote(conn), unquote(conn).status(401))
       end
     end
   end
 
   defmacro current_user(conn) do
     quote do
-      session = get_session(unquote(conn))
-      if session[:user_id] do
-        Repo.get User, session[:user_id]
+      user_id = fetch_session(unquote(conn)) |> get_session(:user_id)
+      if user_id do
+        Repo.get User, user_id
       else
         nil
       end

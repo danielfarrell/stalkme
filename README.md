@@ -1,24 +1,20 @@
 # Stalkme
 
-This is a project built with Elixir that uses Dynamo to serve web requests.
+This is a project built to be a testbed and demo of Elixir and Phoenix.
 
-Resources:
+To start your new Phoenix application you have to:
+
+1. Install dependencies with `mix deps.get`
+2. Set your database connection `export DATABASE_URL=ecto://username:password@hostname/database`
+3. Start Phoenix router with `mix phoenix.start`
+
+Now you can visit `localhost:4000` from your browser.
+
+
+Resources
 
 * [Elixir website](http://elixir-lang.org/)
 * [Elixir getting started guide](http://elixir-lang.org/getting_started/1.html)
 * [Elixir docs](http://elixir-lang.org/docs)
-* [Dynamo source code](https://github.com/elixir-lang/dynamo)
-* [Dynamo guides](https://github.com/elixir-lang/dynamo#learn-more)
-* [Dynamo docs](http://elixir-lang.org/docs/dynamo)
-
-Development is being done with Ruby[http://ruby-lang.org/] tools(foreman[http://ddollar.github.io/foreman/] and guard[http://guardgem.org/] primarily).
-
-To run the server in development create a .env file with a DATABASE_URL and SMTP_URL variables and then run:
-
-    foreman start
-
-Asset compiling is only happening from Guard at the moment. From a console run:
-
-    guard
-
-And then modify your assets.  A rake task to compile them will be coming soon.
+* [Phoenix source code](https://github.com/phoenixframework/phoenix)
+* [Phoenix docs](http://api.phoenixframework.org/)

@@ -1,11 +1,9 @@
 defmodule Stalkme do
-  use Application.Behaviour
+  use Application
 
-  @doc """
-  The application callback used to start this
-  application and its Dynamos.
-  """
+  # See http://elixir-lang.org/docs/stable/Application.Behaviour.html
+  # for more information on OTP Applications
   def start(_type, _args) do
-    Stalkme.Supervisor.start_link([max_restarts: 5, max_seconds: 5])
+    Stalkme.Supervisor.start_link
   end
 end

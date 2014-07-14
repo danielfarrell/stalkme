@@ -1,18 +1,18 @@
 defmodule Stalkme.Supervisor do
-  use Supervisor.Behaviour
+  use Supervisor
 
-  # A convenience to start the supervisor
-  def start_link(stack) do
-    :supervisor.start_link(__MODULE__, stack)
+  def start_link do
+    :supervisor.start_link(__MODULE__, [])
   end
 
-  # The callback invoked when the supervisor starts
-  def init(stack) do
-    children = [ 
+  def init([]) do
+    children = [
       worker(Announcer, []),
-      worker(Repo, []),
-      supervisor(Stalkme.Dynamo, [stack])
+      worker(Repo, [])
     ]
-    supervise children, strategy: :one_for_one
+
+    # See http://elixir-lang.org/docs/stable/Supervisor.Behaviour.html
+    # for other strategies and supported options
+    supervise(children, strategy: :one_for_one)
   end
 end

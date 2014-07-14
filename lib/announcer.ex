@@ -1,5 +1,5 @@
 defmodule Announcer do
-  use GenServer.Behaviour
+  use GenServer
 
   # Public API
   def add(pid) do
@@ -31,8 +31,8 @@ defmodule Announcer do
 
   def handle_cast({:announce, {:status, status_id}}, connections) do
     spawn fn ->
-      s = Statuses.find(status_id)
-      m = EEx.eval_file "web/templates/statuses/_status.html.eex", assigns: [status: s]
+      s = Status.find(status_id)
+      m = EEx.eval_file "lib/stalkme/templates/statuses/_status.html.eex", assigns: [status: s]
       connections |> send_all(m)
     end
     { :noreply, connections }
