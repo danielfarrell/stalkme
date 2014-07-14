@@ -2,7 +2,7 @@
 
   <div class="span6">
     <%= if @current_user do %>
-    <form action="/statuses" method="POST">
+    <form action="/statuses" method="POST" id="new_status">
       <fieldset>
         <label for="text">What are you doing?</label>
         <textarea id="text" name="text" rows="4"></textarea>
