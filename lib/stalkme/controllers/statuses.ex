@@ -16,7 +16,7 @@ defmodule Stalkme.Controllers.Statuses do
     user_id = fetch_session(conn) |> get_session(:user_id)
     status = %Status{text: text, user_id: user_id, created_at: Now.datetime}
     status = Repo.insert(status)
-    #Announcer.announce({:status, status.id})
+    Announcer.announce({:status, status.id})
     #render conn, "show", current_user: current_user(conn)
     redirect conn, "/"
   end

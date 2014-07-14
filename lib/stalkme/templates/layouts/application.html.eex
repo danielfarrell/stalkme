@@ -9,7 +9,7 @@
 
   <title>Stalk Me!</title>
   <link rel="shortcut icon" href="/static/favicon.ico" />
-  <link rel="stylesheet" href="/static/assets/application.css">
+  <link rel="stylesheet" href="/static/css/app.css">
 </head>
 <body>
   <div class="navbar">
@@ -41,37 +41,6 @@
   <div class="container">
     <%= @inner %>
   </div>
-  <script src="/static/components/underscore/underscore.js" ></script>
-  <script src="/static/components/jquery/jquery.js" ></script>
-  <script src="/static/components/jquery-timeago/jquery.timeago.js" ></script>
-  <script src="/static/components/jquery-form/jquery.form.js" ></script>
-  <script src="/static/js/phoenix.js" ></script>
-  <script src="/static/assets/application.js" ></script>
-  <script type="text/javascript">
-    (function () {
-      var $statuses = jQuery('#statuses');
-      var addStatus = function (event) {
-        var s = $(event.data);
-        s.find("abbr.timeago").timeago();
-        $statuses.prepend(s);
-      };
-
-      var socket = new Phoenix.Socket("ws://" + location.host + "/ws");
-      socket.join("live", "updates", {}, function(chan){
-        chan.on("update", function(msg){
-          $statuses.prepend(msg.content);
-        });
-      });
-
-      $(document).ready(function() {
-        $("abbr.timeago").timeago();
-        //$('form').ajaxForm(function(r, status, xhr, form){
-          //form[0].reset();
-        //});
-      }); 
-      //var ws = new WebSocket("ws://localhost:4000/ws");
-      //ws.onmessage = addStatus;
-    })();
-  </script>
+  <script src="/static/js/app.js" ></script>
 </body>
 </html>
