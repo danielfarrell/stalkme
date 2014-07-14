@@ -7,7 +7,6 @@ defmodule Stalkme.Supervisor do
 
   def init([]) do
     children = [
-      worker(Announcer, []),
       worker(Repo, [])
     ]
 
