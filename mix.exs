@@ -4,24 +4,29 @@ defmodule Stalkme.Mixfile do
   def project do
     [ app: :stalkme,
       version: "0.0.1",
-      dynamos: [Stalkme.Dynamo, Websocket.Router],
-      compilers: [:elixir, :dynamo, :app],
-      env: [prod: [compile_path: "ebin"]],
-      compile_path: "tmp/#{Mix.env}/stalkme/ebin",
+      elixir: "~> 0.14.2",
       deps: deps ]
   end
 
   # Configuration for the OTP application
   def application do
-    [ applications: [:cowboy, :dynamo],
-      mod: { Stalkme, [] } ]
+    [
+      mod: { Stalkme, [] },
+      applications: [:phoenix]
+    ]
   end
 
+  # Returns the list of dependencies in the format:
+  # { :foobar, git: "https://github.com/elixir-lang/foobar.git", tag: "0.1" }
+  #
+  # To specify particular versions, regardless of the tag, do:
+  # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps do
-    [ { :cowboy, github: "extend/cowboy" },
-      { :dynamo, github: "dynamo/dynamo", branch: "0.13" },
-      { :postgrex, github: "ericmj/postgrex" },
-      { :ecto, github: "elixir-lang/ecto" },
-      { :gen_smtp, github: "Vagabond/gen_smtp" } ]
+    [
+      {:phoenix, "~> 0.3.1"},
+      {:cowboy, "~> 0.10.0", github: "extend/cowboy", optional: true},
+      {:postgrex, "~> 0.5.2"},
+      {:ecto, "~> 0.2.2"}
+    ]
   end
 end

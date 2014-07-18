@@ -1,6 +1,5 @@
 defmodule Now do
   def datetime do
-    {{year, month, day},{hour, min, sec}} = :erlang.universaltime
-    Ecto.DateTime[year: year, month: month, day: day, hour: hour, min: min, sec: sec]
+    Ecto.DateTime.from_erl(:erlang.universaltime)
   end
 end

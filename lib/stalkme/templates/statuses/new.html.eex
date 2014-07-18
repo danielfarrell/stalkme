@@ -1,0 +1,12 @@
+<form action="/statuses" method="POST" id="new_status">
+  <fieldset>
+    <legend>New Status</legend>
+
+    <label for="text">Status</label>
+    <textarea id="text" name="text"></textarea>
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Create!</button>
+    </div>
+  </fieldset>
+</form>
