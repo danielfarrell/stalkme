@@ -1,0 +1,23 @@
+<form action="/users" method="POST">
+  <fieldset>
+    <legend>Register</legend>
+
+    <input type="hidden" name="csrf_token" value="<%= @csrf_token %>" />
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your Full Name" />
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Your Email" />
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Choose a Username" />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Choose a Password" />
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Register</button>
+    </div>
+  </div>
+</form>

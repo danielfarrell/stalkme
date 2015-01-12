@@ -4,7 +4,9 @@ defmodule Stalkme.Mixfile do
   def project do
     [ app: :stalkme,
       version: "0.0.1",
-      elixir: "~> 0.14.2",
+      elixir: "~> 1.0",
+      elixirc_paths: ["lib", "web"],
+      compilers: [:phoenix] ++ Mix.compilers,
       deps: deps ]
   end
 
@@ -12,7 +14,7 @@ defmodule Stalkme.Mixfile do
   def application do
     [
       mod: { Stalkme, [] },
-      applications: [:phoenix]
+      applications: [:phoenix, :cowboy, :logger]
     ]
   end
 
@@ -23,10 +25,10 @@ defmodule Stalkme.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps do
     [
-      {:phoenix, "~> 0.3.1"},
-      {:cowboy, "~> 0.10.0", github: "extend/cowboy", optional: true},
-      {:postgrex, "~> 0.5.2"},
-      {:ecto, "~> 0.2.2"}
+      {:phoenix, "~> 0.8.0"},
+      {:cowboy, "~> 1.0"},
+      {:postgrex, "~> 0.6.0"},
+      {:ecto, "~> 0.5.0"},
     ]
   end
 end

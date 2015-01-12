@@ -1,5 +1,5 @@
-defimpl Phoenix.Html.Safe, for: Ecto.DateTime do
-  def to_string(d) do
+defimpl Phoenix.HTML.Safe, for: Ecto.DateTime do
+  def to_iodata(d) do
     month = String.rjust("#{d.month}", 2, ?0)
     day = String.rjust("#{d.day}", 2, ?0)
     hour = String.rjust("#{d.hour}", 2, ?0)

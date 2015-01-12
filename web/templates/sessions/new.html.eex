@@ -1,0 +1,17 @@
+<form action="/sessions" method="POST">
+  <fieldset>
+    <legend>Login</legend>
+
+    <input type="hidden" name="csrf_token" value="<%= @csrf_token %>" />
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Username" />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" />
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Login</button>
+    </div>
+  </div>
+</form>

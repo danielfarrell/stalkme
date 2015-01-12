@@ -1,5 +1,0 @@
-<li>
-  <div class="status"><%= @status.text %></div>
-  <strong><%= @status.user.get.name %></strong>
-  <abbr class="timeago" title="<%= @status.created_at %>"><%= @status.created_at %></abbr>
-</li>
