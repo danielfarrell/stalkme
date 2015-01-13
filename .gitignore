@@ -1,6 +1,6 @@
 /_build
 /deps
 /node_modules
+/bower_components
 erl_crash.dump
 *.ez
-priv/static/components/**/*
