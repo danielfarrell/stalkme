@@ -1,11 +1,10 @@
 defmodule Stalkme.SessionsController do
-  use Phoenix.Controller
-  import Authme
+  use Stalkme.Web, :controller
 
-  plug :action
+  alias Stalkme.User
 
   def new(conn, _params) do
-    render conn, "new.html", current_user: current_user(conn), csrf_token: get_session(conn, :csrf_token)
+    render conn, "new.html", csrf_token: get_session(conn, :csrf_token)
   end
 
   def create(conn, %{"username" => username, "password" => password}) do

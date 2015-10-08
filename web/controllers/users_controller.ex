@@ -1,20 +1,20 @@
 defmodule Stalkme.UsersController do
-  use Phoenix.Controller
-  import Authme
+  use Stalkme.Web, :controller
 
-  plug :action
+  alias Stalkme.Repo
+  alias Stalkme.User
 
   def index(conn, _params) do
-    render conn, "index.html", current_user: current_user(conn)
+    render conn, "index.html"
   end
 
   def new(conn, _params) do
-    render conn, "new.html", current_user: current_user(conn), csrf_token: get_session(conn, :csrf_token)
+    render conn, "new.html", csrf_token: get_session(conn, :csrf_token)
   end
 
-  def show(conn, %{"id" => id}) do
-    {id, _} = Integer.parse(id)
-    render conn, "index.html", statuses: Status.for_user(id), current_user: current_user(conn)
+  def show(conn, params) do
+    {id, _} = Integer.parse(params["id"])
+    render conn, "index.html", statuses: Status.for_user(id, params)
   end
 
   def create(conn, %{"name" => name, "username" => username, "email" => email, "password" => password}) do

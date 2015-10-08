@@ -1,7 +1,5 @@
 defmodule Stalkme.PagesController do
-  use Phoenix.Controller
-
-  plug :action
+  use Stalkme.Web, :controller
 
   def index(conn, _params) do
     render conn, "index.html"

@@ -1,19 +1,27 @@
 defmodule Stalkme.Router do
-  use Phoenix.Router
+  use Stalkme.Web, :router
+
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
 
   pipeline :browser do
-    plug :accepts, ~w(html)
+    plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
+    plug :put_secure_browser_headers
   end
 
   pipeline :api do
-    plug :accepts, ~w(json)
+    plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader
+    plug Guardian.Plug.LoadResource
   end
 
   scope "/", Stalkme do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :browser_session] # Use the default browser stack
 
     get "/", StatusesController, :index
     get "/logout", SessionsController, :destroy
@@ -22,8 +30,8 @@ defmodule Stalkme.Router do
     resources "users", UsersController
   end
 
-  socket "/ws", Stalkme do
-    channel "live", LiveChannel
+  # Other scopes may use custom stacks.
+  scope "/api", Stalkme.Api do
+    pipe_through [:api]
   end
-
 end

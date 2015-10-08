@@ -1,4 +1,3 @@
 defmodule Stalkme.StatusesView do
-  use Stalkme.View
-
+  use Stalkme.Web, :view
 end

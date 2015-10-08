@@ -9,8 +9,8 @@ defmodule Stalkme do
     children = [
       # Start the endpoint when the application starts
       worker(Stalkme.Endpoint, []),
-      worker(Repo, [])
-
+      # Start the Ecto repository
+      worker(Stalkme.Repo, [])
       # Here you could define other workers and supervisors as children
       # worker(Stalkme.Worker, [arg1, arg2, arg3]),
     ]

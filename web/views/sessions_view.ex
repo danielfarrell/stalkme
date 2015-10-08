@@ -1,4 +1,3 @@
 defmodule Stalkme.SessionsView do
-  use Stalkme.View
-
+  use Stalkme.Web, :view
 end

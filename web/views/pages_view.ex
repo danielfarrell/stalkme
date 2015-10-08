@@ -1,4 +1,3 @@
-defmodule Stalkme.PagesView do
-  use Stalkme.View
-
+defmodule Stalkme.PageView do
+  use Stalkme.Web, :view
 end
